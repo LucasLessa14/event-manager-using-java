@@ -43,10 +43,12 @@ mysql> exit
 ```
 > heroku --version
 > heroku login
-> heroku create project-name/dominio
+> heroku create project-name (create a new url)
 
 > git push heroku master
 > heroku logs --tail
+> heroku apps
+> heroku addons:create heroku-postgresql:hobby-dev -a project-name
 ```
 
 ## 3. Author
