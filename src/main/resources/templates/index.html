@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Java Project</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header>
+		<nav class="menu">
+		    <div class="nav-wrapper container">
+		      <a href="#" class="brand-logo">Lista de Eventos</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a href="/createEvent" class="waves-effect waves-light btn"><i class="material-icons left">control_point</i>Cadastrar Evento</a></li>
+		      </ul>
+		    </div>
+		</nav>
+	</header>
+
+    <!-- <h1>Sistema para cadastro de eventos!!</h1>
+	<h3>Faça seu Login e cadastre seus eventos e listas de convidados!</h3> -->
+
+    <table class="container">
+        <thead>
+            <tr>
+                <th>Nome do Evento</th>
+                <th>Local do Evento</th>
+                <th>Data do Evento</th>
+                <th>Horário do Evento</th>
+                <th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="event: ${events}">
+                <td><a th:href="${(#mvc.url('EC#eventDetails').arg(0, event.eventId)).build()}"><span th:text="${event.eventName}"></span></a></td>
+                <td><span th:text="${event.eventPlace}"></span></td>
+                <td><span th:text="${event.eventDate}"></span></td>
+                <td><span th:text="${event.eventTime}"></span></td>
+                <td><a th:href="${(#mvc.url('EC#deleteEvent').arg(0, event.eventId)).build()}"><i class="material-icons left red-text text-accent-2">delete</i></a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+</html>
